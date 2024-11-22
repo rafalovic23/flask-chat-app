@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - JUNGLE's CHAT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <h1>JUNGLE's CHAT</h1>
+        <form id="login-form" class="form-login">
+            <input type="text" id="username" class="input-login" placeholder="Nom d'utilisateur" required>
+            <input type="password" id="password" class="input-login" placeholder="Mot de passe" required>
+            <button type="submit" class="button-login">Se connecter</button>
+        </form>
+        <p>Pas de compte ? <a href="{{ url_for('register_page') }}">Inscrivez-vous</a></p>
+        <p id="error-message" class="error"></p>
+    </div>
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+</html>

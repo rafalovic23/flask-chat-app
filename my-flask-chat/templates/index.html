@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUNGLE's CHAT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Accueil</a></li>
+                <li><a href="{{ url_for('login_page') }}">Connexion</a></li>
+                <li><a href="{{ url_for('register_page') }}">Inscription</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>JUNGLE's CHAT</h1>
+        <button class="enter-button" onclick="window.location.href='{{ url_for('login_page') }}'">
+            ENTER THE JUNGLE
+        </button>
+    </main>
+</body>
+</html>

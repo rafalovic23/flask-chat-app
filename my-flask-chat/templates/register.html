@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - JUNGLE's CHAT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="register-container">
+        <h1>JUNGLE's CHAT</h1>
+        <form id="register-form" class="form-register">
+            <input type="text" id="register-username" class="input-register" placeholder="Nom d'utilisateur" required>
+            <input type="password" id="register-password" class="input-register" placeholder="Mot de passe" required>
+            <input type="password" id="register-confirm-password" class="input-register" placeholder="Confirmez le mot de passe" required>
+            <button type="submit" class="button-register">S'inscrire</button>
+        </form>
+        <p>Déjà un compte ? <a href="{{ url_for('login_page') }}">Connectez-vous</a></p>
+        <p id="error-message" class="error"></p>
+    </div>
+    <script src="{{ url_for('static', filename='register.js') }}"></script>
+</body>
+</html>
+

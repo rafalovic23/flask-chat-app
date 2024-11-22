@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Jungle's Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Accueil</a></li>
+                <li><a href="{{ url_for('chat_page') }}">Chat</a></li>
+                <li><a href="{{ url_for('profile_page') }}">Profil</a></li>
+                <li><a href="{{ url_for('logout') }}">Déconnexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Profil de {{ user.username }}</h1>
+
+        <div class="profile-container">
+            <!-- Affiche la photo de profil -->
+            <div class="profile-picture">
+                {% if user.profile_picture %}
+                    <img src="{{ url_for('static', filename=user.profile_picture) }}" alt="Photo de profil">
+                {% else %}
+                    <img src="{{ url_for('static', filename='default.png') }}" alt="Photo par défaut">
+                {% endif %}
+            </div>
+
+            <!-- Formulaire de mise à jour -->
+            <form method="POST" enctype="multipart/form-data">
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" id="username" name="username" value="{{ user.username }}" required>
+
+                <label for="bio">Biographie :</label>
+                <textarea id="bio" name="bio">{{ user.bio }}</textarea>
+
+                <label for="profile_picture">Photo de profil :</label>
+                <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+
+                <button type="submit">Mettre à jour</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
