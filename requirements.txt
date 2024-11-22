@@ -1,2 +1,7 @@
-flask
-gunicorn
+Flask==2.3.2
+Flask-SocketIO==5.3.2
+eventlet==0.33.3
+Flask-SQLAlchemy==3.0.5
+gunicorn==21.2.0
+Werkzeug==2.3.7
+itsdangerous==2.1.2
