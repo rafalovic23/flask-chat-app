@@ -8,7 +8,9 @@ from datetime import datetime
 import os
 
 # Initialisation Flask et configurations
-app = Flask(__name__)
+app = Flask(__name__, 
+            template_folder="my-flask-chat/templates",  # Chemin vers le dossier templates
+            static_folder="my-flask-chat/static")      # Chemin vers le dossier static
 app.config['SECRET_KEY'] = 'votre_clé_secrète'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///users.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
