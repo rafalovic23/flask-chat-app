@@ -1,9 +1,9 @@
 document.getElementById('register-form').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
+    const username = document.getElementById('register-username').value;
+    const password = document.getElementById('register-password').value;
+    const confirmPassword = document.getElementById('register-confirm-password').value;
     const errorMessage = document.getElementById('error-message');
 
     // Vérification côté client des mots de passe
@@ -25,23 +25,23 @@ document.getElementById('register-form').addEventListener('submit', function (e)
     })
         .then((response) => {
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                return response.json().then((data) => {
+                    throw new Error(data.message || 'Erreur lors de l\'inscription');
+                });
             }
             return response.json();
         })
         .then((data) => {
             if (data.success) {
-                // Redirection vers la page de connexion si l'inscription réussit
                 alert('Inscription réussie ! Vous allez être redirigé vers la page de connexion.');
                 window.location.href = '/login';
             } else {
-                // Affiche le message d'erreur envoyé par le serveur
-                errorMessage.textContent = data.message || 'Erreur lors de l\'inscription';
+                errorMessage.textContent = data.message || 'Erreur inconnue lors de l\'inscription.';
             }
         })
         .catch((error) => {
-            // Affiche une erreur en cas de problème réseau ou serveur
-            errorMessage.textContent = 'Erreur de connexion au serveur';
-            console.error('Erreur :', error);
+            errorMessage.textContent = error.message || 'Erreur réseau ou serveur.';
+            console.error('Erreur réseau ou serveur :', error);
         });
 });
+
