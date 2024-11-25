@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO, emit
+from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from datetime import datetime
@@ -9,13 +10,16 @@ import os
 # Initialisation Flask et configurations
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'votre_clé_secrète'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///users.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
 # Initialisation de la base de données et de Socket.IO
 db = SQLAlchemy(app)
 socketio = SocketIO(app)
+
+# Initialisation de Flask-Migrate
+migrate = Migrate(app, db)
 
 # Modèles de la base de données
 class User(db.Model):
