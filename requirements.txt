@@ -5,4 +5,5 @@ Flask-SQLAlchemy==3.0.5
 gunicorn==21.2.0
 Werkzeug==2.3.7
 itsdangerous==2.1.2
-Flask-Migrate
+Flask-Migrate==4.0.4
+psycopg2-binary==2.9.7

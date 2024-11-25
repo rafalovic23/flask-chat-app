@@ -23,15 +23,10 @@ migrate = Migrate(app, db)
 
 # Modèles de la base de données
 class User(db.Model):
+ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
-    bio = db.Column(db.Text, nullable=True)
-    profile_picture = db.Column(db.String(120), nullable=True)
-
-# Création de la base de données si elle n'existe pas
-with app.app_context():
-    db.create_all()
 
 # Routes principales
 @app.route('/')
