@@ -23,7 +23,6 @@ migrate = Migrate(app, db)
 
 # Modèles de la base de données
 class User(db.Model):
- class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
